@@ -1,0 +1,15 @@
+body {
+  margin: 10px;
+}
+
+#start {
+  margin: auto;
+}
+
+#dice {
+  width: 25px;
+}
+
+#hideFirst, #hideSecond {
+  display: none;
+}

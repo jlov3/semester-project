@@ -1,0 +1,1 @@
+Dice SVG courtesy of D__ from https://game-icons.net/tags/dice.html.

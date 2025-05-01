@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pig - JS Game</title>
+  <link rel="stylesheet" href="style/modern_normalize.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <button id="start" onclick="game()">Start Game</button>
+  <br>
+
+  <div id="hideFirst">
+    <img id="dice" src="" alt="">
+    <br>
+    <button id="roll" onclick="user()">Roll</button>
+    <button id="hold" onclick="hold(0)">Hold</button>
+
+    <p>Turn Score: <span id="turn"></span></p>
+
+    <p>User Score: <span id="userSc"></span></p>
+    <p>Computer Score: <span id="compSc"></span></p>
+  </div> <!--hideFirst-->
+
+  <div id="hideSecond">
+    <p><span id="win"></span> wins with <span id="pts"></span> points</p>
+    <button id="again" onclick="game()">Play Again?</button>
+  </div> <!--hideSecond-->
+
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

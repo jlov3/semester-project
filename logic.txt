@@ -1,0 +1,35 @@
+vars
+- if game running (global)
+- user score (global)
+- computer score (global)
+- turn score (game scope)
+
+~!~!~!~
+user roll
+
+start game button: run game function
+
+1. roll
+-- if 1: add 0 to user score, END turn
+-- else: add rollnum to turn score, option to roll again or hold
+1a) roll again: goto: roll
+1b) hold: goto: hold
+
+2. hold
+-- add turn score to user score, END turn
+
+
+~!~!~!~
+computer roll
+
+1. roll
+-- if 1: add 0 to computer score, END turn
+-- else: option to roll again or hold
+1a) roll again: goto: roll
+1b) hold: add turn score, END turn
+
+
+`~`~`~`
+
+neither can immediately hold at beginning of turn
+if either score >= 100: declare winner, END game
