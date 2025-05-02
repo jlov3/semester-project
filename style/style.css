@@ -1,11 +1,7 @@
-:root {
-  --pig: #ad426b;
-}
-
 body {
   margin: 10px;
   font-family: 'Kanchenjunga', 'Times New Roman', Times, serif;
-  background-color: var(--pig);
+  background-color: #d5d8e9;
 }
 
 h1, h3 {
