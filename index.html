@@ -3,16 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Pig - JS Game</title>
   <link rel="icon" type="image/x-icon" href="https://openmoji.org/data/color/svg/1F416.svg">
+
   <link rel="stylesheet" href="style/modern_normalize.css">
   <link rel="stylesheet" href="style/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanchenjunga:wght@400;500;600;700&family=Tagesschrift&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <h1>Pig</h1>
   <h3>A Dice Game</h3>
-  <button id="instB" class="show" onclick="instruct()">&#11206; Show Instructions</button>
+  <button id="instB" class="show" onclick="instruct()">&#9654; Show Instructions</button>
 
   <div id="instructions">
     <h2>How to play Pig</h2>
@@ -29,7 +35,7 @@
       <li>The game continues until a player has reached 100 or more points.</li>
     </ul>
 
-    <button id="ex" onclick="ex()">&#11206; Show Example Game</button>
+    <button id="ex" onclick="ex()">&#9654; Show Example Game</button>
     <ul id="exGame">
       <li><b>Game Starts</b></li>
       <li>User Score: 0</li>
@@ -90,31 +96,36 @@
   </div> <!--instructions-->
   <br>
 
-  <button id="start" onclick="game()">Start Game</button>
+  <button id="start" onclick="game('false')">Start Game</button>
   <br>
 
-  <div id="hideFirst">
-    <img id="dice" src="" alt="">
+  <div id="game">
+    <div id="hideFirst">
+      <img id="dice" src="" alt="">
+      <br>
+      <button id="roll" onclick="user()">Roll</button>
+      <button id="hold" onclick="hold(0)">Hold</button>
+
+      <p>Turn Total: <span id="turn"></span></p>
+
+      <p>User Score: <span id="userSc"></span></p>
+      <p>Computer Score: <span id="compSc"></span></p>
+
+      <!-- For your convenience -->
+      <button id="testing" onclick="announce()">Test Win</button>
+    </div> <!--hideFirst-->
+
     <br>
-    <button id="roll" onclick="user()">Roll</button>
-    <button id="hold" onclick="hold(0)">Hold</button>
+    <p id="fullR">Current Round: <span id="round"></span></p>
 
-    <p>Turn Total: <span id="turn"></span></p>
-
-    <p>User Score: <span id="userSc"></span></p>
-    <p>Computer Score: <span id="compSc"></span></p>
-
-    <!-- For your convenience -->
-    <button id="testing" onclick="announce()">Test Win</button>
-  </div> <!--hideFirst-->
-
-  <div id="hideSecond">
-    <p><span id="win"></span> wins with <span id="pts"></span> points.</p>
-    <button id="again" onclick="game()">Play Again?</button>
-  </div> <!--hideSecond-->
+    <div id="hideSecond">
+      <p><span id="win"></span> wins with <span id="pts"></span> points.</p>
+      <button id="again" onclick="game('true')">Play Again?</button>
+    </div> <!--hideSecond-->
+  </div> <!--game-->
 
   <div id="cred">
-    <button id="credB" onclick="cred()">&#11206; Images Used</button>
+    <button id="credB" onclick="cred()">&#9654; Images Used</button>
 
     <div id="cred-drop">
       <p>Favicon: <a href="https://openmoji.org/library/emoji-1F416/" target="_blank">OpenMoji.org, "Pig"</a>, by <a href="https://openmoji.org/library/#author=Sofie%20Ascherl" target="_blank">Sofie Ascherl</a></p>

@@ -11,7 +11,7 @@ function instruct() {
   } else {
     inst.style.display = "none";
     inst.style.borderRadius = "6px";
-    instB.innerHTML = "&#11206; Show Instructions";
+    instB.innerHTML = "&#9654; Show Instructions";
     instB.style.borderRadius = "6px";
   }
 }
@@ -24,7 +24,7 @@ function ex() {
     instB.innerHTML = "&#11205; Hide Example Game";
   } else {
     inst.style.display = "none";
-    instB.innerHTML = "&#11206; Show Example Game";
+    instB.innerHTML = "&#9654; Show Example Game";
   }
 }
 
@@ -39,7 +39,7 @@ function cred() {
   } else {
     inst.style.display = "none";
     inst.style.borderRadius = "6px";
-    instB.innerHTML = "&#11206; Images Used";
+    instB.innerHTML = "&#9654; Images Used";
     instB.style.borderRadius = "6px";
   }
 }
@@ -72,22 +72,28 @@ function changeImg(roll) {
   diceEl.alt = roll + "side of a die";
 }
 
-function game() {
+function game(replay) {
   let start = document.getElementById("start");
   start.style.display = "none";
-  let possShown = document.getElementById("hideSecond");
-  possShown.style.display = "none";
+  let game = document.getElementById("game");
+    game.style.display = "block";
+  if(replay) {
+    let possShown = document.getElementById("hideSecond");
+    possShown.style.display = "none";
+  }
   let show = document.getElementById("hideFirst");
   show.style.display = "inline-block";
   changeImg(1);
   playing = true;
   console.log("GAME STARTS");
+  round = 1;
+  document.getElementById("round").innerText = round;
+  document.getElementById("fullR").style.display = "block";
   console.log("ROUND: 1");
 }
 
 function computer() {
   console.log("COMPUTER's turn begins.");
-  document.getElementById("roll").innerText = "Roll";
 
   var behavior = Math.floor(Math.random() * 3);
   console.log("BEHAVIOR: " + behavior);
@@ -108,15 +114,21 @@ function computer() {
       console.log("COMPUTER rolls something other than 1");
       turnSc += roll;
       document.getElementById("turn").innerText = turnSc;
+      if(compSc + turnSc >= 100) {
+        announce(1);
+        return;
+      }
     } else {
       console.log("COMPUTER rolls a 1");
       turnSc = 0;
       document.getElementById("turn").innerText = turnSc;
       document.getElementById("compSc").innerText = compSc;
       playing = true;
+      /*Changes cursor for buttons bc if find time delay function, want to prevent USER from clicking buttons when it is not their turn*/
       document.getElementById("roll").style.cursor = "pointer";
       document.getElementById("hold").style.cursor = "pointer";
-      window.alert("Computer rolled a 1. Computer's rolls: " + (i+1) + ".");window.alert("User's turn.");
+      window.alert("Computer rolled a 1. Computer's rolls: " + (i+1) + ".");
+      window.alert("User's turn.");
       console.log("Window alert: User's turn.");
       return;
     }
@@ -150,13 +162,13 @@ function user() {
     if(userSc + turnSc >= 100) {
       userSc += turnSc;
       announce(0);
+      return;
     }
   }
   if (userRolls == 10) {
     window.alert("You've used all of your userRolls for this round.");
     console.log("USER has reached MAX rolls for this round");
     hold(0);
-    userRolls++;
     console.log("Num of USER rolls: " + userRolls);
     return;
   }
@@ -179,6 +191,8 @@ function hold(player) {
     console.log("HOLDING from USER() [Successful rolls]");
     userSc += turnSc;
     console.log("USER score: " + userSc);
+    userRolls = 0;
+    document.getElementById("roll").innerText = "Roll";
     console.log("USER's turn ends");
   } else {
     console.log("HOLDING from COMPUTER() [Successful rolls]");
@@ -199,6 +213,7 @@ function hold(player) {
     window.alert("User's turn.");
     console.log("Window alert: User's turn.");
     round++;
+    document.getElementById("round").innerText = round;
     console.log("ROUND: " + round);
     playing = true;
     document.getElementById("roll").style.cursor = "pointer";
@@ -210,13 +225,14 @@ function hold(player) {
     playing = false;
     document.getElementById("roll").style.cursor = "not-allowed";
     document.getElementById("hold").style.cursor = "not-allowed";
-    userRolls = 0;
     computer();
   }
 }
 
 
 function announce(player) {
+  round++;
+  document.getElementById("round").innerText = round;
   /*Hide die & buttons*/
   let shown = document.getElementById("hideFirst");
   shown.style.display = "none";

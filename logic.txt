@@ -1,3 +1,5 @@
+**just for initial brainstorming**
+
 vars
 - if game running (global)
 - user score (global)

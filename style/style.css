@@ -1,14 +1,27 @@
+:root {
+  --pig: #ad426b;
+}
+
 body {
   margin: 10px;
+  font-family: 'Kanchenjunga', 'Times New Roman', Times, serif;
+  background-color: var(--pig);
+}
+
+h1, h3 {
+  font-family: 'Tagesschrift', Arial, Helvetica, sans-serif;
+  color: #301c0e;
 }
 
 h1 {
-  text-transform: uppercase;
   margin-bottom: 2px;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 h3 {
   margin-top: 0;
+  font-weight: 100;
 }
 
 button {
@@ -23,7 +36,11 @@ hr {
   border-top: 2px dashed gray;
 }
 
-#instB, #exGame, #cred button, #cred {
+#instructions, #game, #cred-drop {
+  background-color: white;
+}
+
+#instB, #exGame, #game, #cred button, #cred {
   width: 100%;
 }
 #instructions, #cred-drop {
@@ -34,6 +51,7 @@ hr {
 
 #instructions img, #exGame img {
   width: 15px;
+  margin-left: 3px;
 }
 
 #exGame {
@@ -61,11 +79,15 @@ hr {
   margin-top: 20px;
 }
 
+#game {
+  padding: 15px;
+}
+
 #dice {
   width: 40px;
   margin: 20px 0;
 }
 
-#instructions, #exGame, #hideFirst, #hideSecond, #cred-drop {
+#instructions, #exGame, #game, #hideFirst, #fullR, #hideSecond, #cred-drop {
   display: none;
 }
