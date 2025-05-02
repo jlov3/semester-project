@@ -4,10 +4,91 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pig - JS Game</title>
+  <link rel="icon" type="image/x-icon" href="https://openmoji.org/data/color/svg/1F416.svg">
   <link rel="stylesheet" href="style/modern_normalize.css">
   <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+
+  <h1>Pig</h1>
+  <h3>A Dice Game</h3>
+  <button id="instB" class="show" onclick="instruct()">&#11206; Show Instructions</button>
+
+  <div id="instructions">
+    <h2>How to play Pig</h2>
+    <ul>
+      <li>There is one dice. </li>
+      <li>There are two players (you, as the user, and the computer).</li>
+      <li>Each round consists of one turn for each player. You go first. </li>
+      <li>On your first move of a turn, you must roll the die. </li>
+      <li>After your first roll, you may choose to <i>roll</i> or to <i>hold</i>. </li>
+      <li><i>Rolls</i> will add together for points you earn that turn. You have up to 10 rolls per turn.</li>
+      <li><i>Holding</i> will end your turn, and add the points you earned this round to your total score. </li>
+      <li>However, if you roll a <b>ONE</b> <img src="images/1.svg" alt="">, your turn will immediately end and no points will be added to your score. </li>
+      <li>The computer will play its turn, and then the round will end
+      <li>The game continues until a player has reached 100 or more points.</li>
+    </ul>
+
+    <button id="ex" onclick="ex()">&#11206; Show Example Game</button>
+    <ul id="exGame">
+      <li><b>Game Starts</b></li>
+      <li>User Score: 0</li>
+      <li>Computer Score: 0</li>
+      <hr>
+      <li>Turn Total: 0</li>
+      <li>User rolls <img src="images/2.svg" alt=""></li>
+      <li>Turn Total: 2</li>
+      <li>User rolls <img src="images/5.svg" alt=""></li>
+      <li>Turn Total: 7</li>
+      <li>User rolls <img src="images/3.svg" alt=""></li>
+      <li>Turn Total: 10</li>
+      <li>User holds</li>
+      <li>User Score: 10</li>
+      <li>Computer Score: 0</li>
+      <hr>
+      <li>Turn Total: 0</li>
+      <li>Computer rolls <img src="images/6.svg" alt=""></li>
+      <li>Turn toal: 6</li>
+      <li>Computer rolls <img src="images/3.svg" alt=""></li>
+      <li>Turn Total: 9</li>
+      <li>Computer rolls <img src="images/1.svg" alt=""></li>
+      <li>Turn Total: 0</li>
+      <li>User Score: 10</li>
+      <li>Computer Score: 0</li>
+      <hr>
+      <li>...</li>
+      <hr>
+      <li>User Score: 89</li>
+      <li>Computer Score: 76</li>
+      <hr>
+      <li>Turn Total: 0</li>
+      <li>User rolls <img src="images/1.svg" alt=""</li>
+      <li>Turn Total: 0</li>
+      <li>User Score: 89</li>
+      <li>Computer Score: 76</li>
+      <hr>
+      <li>Turn Total: 0</li>
+      <li>Computer rolls <img src="images/6.svg" alt=""></li>
+      <li>Turn Total: 6</li>
+      <li>Computer rolls <img src="images/4.svg" alt=""></li>
+      <li>Turn Total: 10</li>
+      <li>Computer holds</li>
+      <li>User Score: 89</li>
+      <li>Computer Score: 86</li>
+      <hr>
+      <li>Turn Total: 0</li>
+      <li>User rolls <img src="images/5.svg" alt=""></li>
+      <li>Turn Total: 5</li>
+      <li>User rolls <img src="images/6.svg" alt=""></li>
+      <li>Turn Total: 11</li>
+      <li><i>A player has scored 100pts or more</i></li>
+      <hr>
+      <li>User Score: 100</li>
+      <li>Computer Score: 86</li>
+      <li><b>User Wins</b></li>
+    </ul>
+  </div> <!--instructions-->
+  <br>
 
   <button id="start" onclick="game()">Start Game</button>
   <br>
@@ -18,17 +99,28 @@
     <button id="roll" onclick="user()">Roll</button>
     <button id="hold" onclick="hold(0)">Hold</button>
 
-    <p>Turn Score: <span id="turn"></span></p>
+    <p>Turn Total: <span id="turn"></span></p>
 
     <p>User Score: <span id="userSc"></span></p>
     <p>Computer Score: <span id="compSc"></span></p>
+
+    <!-- For your convenience -->
+    <button id="testing" onclick="announce()">Test Win</button>
   </div> <!--hideFirst-->
 
   <div id="hideSecond">
-    <p><span id="win"></span> wins with <span id="pts"></span> points</p>
+    <p><span id="win"></span> wins with <span id="pts"></span> points.</p>
     <button id="again" onclick="game()">Play Again?</button>
   </div> <!--hideSecond-->
 
+  <div id="cred">
+    <button id="credB" onclick="cred()">&#11206; Images Used</button>
+
+    <div id="cred-drop">
+      <p>Favicon: <a href="https://openmoji.org/library/emoji-1F416/" target="_blank">OpenMoji.org, "Pig"</a>, by <a href="https://openmoji.org/library/#author=Sofie%20Ascherl" target="_blank">Sofie Ascherl</a></p>
+      <p>Die faces: <a href="https://game-icons.net/tags/dice.html" target="_blank">Game-icons.net, "38 Dice Icons"</a>, by <a href="https://delapouite.com" target="_blank">Delapouite</a></p>
+    </div>
+  </div>
 
   <script type="text/javascript" src="script.js"></script>
 </body>

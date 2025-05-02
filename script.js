@@ -1,4 +1,53 @@
-var gametf = false;
+// BUTTONS
+
+function instruct() {
+  var inst = document.getElementById("instructions");
+  var instB = document.getElementById("instB");
+  if(inst.style.display == "" || inst.style.display == "none") {
+    inst.style.display = "block";
+    inst.style.borderRadius = "0px 0px 6px 6px";
+    instB.innerHTML = "&#11205; Hide Instructions";
+    instB.style.borderRadius = "6px 6px 0px 0px";
+  } else {
+    inst.style.display = "none";
+    inst.style.borderRadius = "6px";
+    instB.innerHTML = "&#11206; Show Instructions";
+    instB.style.borderRadius = "6px";
+  }
+}
+
+function ex() {
+  var inst = document.getElementById("exGame");
+  var instB = document.getElementById("ex");
+  if(inst.style.display == "" || inst.style.display == "none") {
+    inst.style.display = "block";
+    instB.innerHTML = "&#11205; Hide Example Game";
+  } else {
+    inst.style.display = "none";
+    instB.innerHTML = "&#11206; Show Example Game";
+  }
+}
+
+function cred() {
+  var inst = document.getElementById("cred-drop");
+  var instB = document.getElementById("credB");
+  if(inst.style.display == "" || inst.style.display == "none") {
+    inst.style.display = "block";
+    inst.style.borderRadius = "0px 0px 6px 6px";
+    instB.innerHTML = "&#11205; Images Used";
+    instB.style.borderRadius = "6px 6px 0px 0px";
+  } else {
+    inst.style.display = "none";
+    inst.style.borderRadius = "6px";
+    instB.innerHTML = "&#11206; Images Used";
+    instB.style.borderRadius = "6px";
+  }
+}
+
+
+
+// DICE GAME
+
 var round = 1;
 var playing = false;
 var userRolls = 0;
@@ -24,10 +73,9 @@ function changeImg(roll) {
 }
 
 function game() {
-  gametf = true;
   let start = document.getElementById("start");
   start.style.display = "none";
-  let possShown = document.getElementById("again");
+  let possShown = document.getElementById("hideSecond");
   possShown.style.display = "none";
   let show = document.getElementById("hideFirst");
   show.style.display = "inline-block";
@@ -66,6 +114,8 @@ function computer() {
       document.getElementById("turn").innerText = turnSc;
       document.getElementById("compSc").innerText = compSc;
       playing = true;
+      document.getElementById("roll").style.cursor = "pointer";
+      document.getElementById("hold").style.cursor = "pointer";
       window.alert("Computer rolled a 1. Computer's rolls: " + (i+1) + ".");window.alert("User's turn.");
       console.log("Window alert: User's turn.");
       return;
@@ -96,6 +146,10 @@ function user() {
     document.getElementById("turn").innerText = turnSc;
     if(userRolls == 1) {
       document.getElementById("roll").innerText += " Again";
+    }
+    if(userSc + turnSc >= 100) {
+      userSc += turnSc;
+      announce(0);
     }
   }
   if (userRolls == 10) {
@@ -147,11 +201,15 @@ function hold(player) {
     round++;
     console.log("ROUND: " + round);
     playing = true;
+    document.getElementById("roll").style.cursor = "pointer";
+    document.getElementById("hold").style.cursor = "pointer";
     return;
   } else if(playing){
     window.alert("Computer's turn.");
     console.log("Window alert: Computer's turn.");
     playing = false;
+    document.getElementById("roll").style.cursor = "not-allowed";
+    document.getElementById("hold").style.cursor = "not-allowed";
     userRolls = 0;
     computer();
   }
@@ -159,12 +217,11 @@ function hold(player) {
 
 
 function announce(player) {
-  gametf = false;
-  /*Hide roll & hold buttons*/
+  /*Hide die & buttons*/
   let shown = document.getElementById("hideFirst");
   shown.style.display = "none";
 
-  /*Show winner announcement*/
+  /*Show winner announcement & replay button*/
   let show = document.getElementById("hideSecond");
   show.style.display = "inline-block";
 

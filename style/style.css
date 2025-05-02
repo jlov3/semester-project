@@ -2,14 +2,70 @@ body {
   margin: 10px;
 }
 
-#start {
-  margin: auto;
+h1 {
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+button {
+  padding: 10px;
+  border: 2px solid #5e6974;
+  border-radius: 6px;
+  background: #d4d8dc;
+  cursor: pointer;
+}
+
+hr {
+  border-top: 2px dashed gray;
+}
+
+#instB, #exGame, #cred button, #cred {
+  width: 100%;
+}
+#instructions, #cred-drop {
+  border: 2px solid #5e6974;
+  margin-top: -2px;
+  padding: 10px;
+}
+
+#instructions img, #exGame img {
+  width: 15px;
+}
+
+#exGame {
+  padding-left: 0;
+}
+#exGame li {
+  padding: 4px 15px 4px 8px;
+  list-style-type: none;
+}
+#exGame li:not(:first-of-type)::before {
+  content: "- ";
+}
+#exGame li:nth-child(odd) {
+  background: #d5d5d5;
+}
+#exGame li:nth-child(even) {
+  background: #e5e5e5;
+}
+
+#ex {
+  width: 40%;
+}
+
+#start, #cred {
+  margin-top: 20px;
 }
 
 #dice {
-  width: 25px;
+  width: 40px;
+  margin: 20px 0;
 }
 
-#hideFirst, #hideSecond {
+#instructions, #exGame, #hideFirst, #hideSecond, #cred-drop {
   display: none;
 }
