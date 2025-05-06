@@ -80,6 +80,10 @@ function game(replay) {
   if(replay) {
     let possShown = document.getElementById("hideSecond");
     possShown.style.display = "none";
+    userRolls = 0;
+    userSc = 0;
+    compSc = 0;
+    turnSc = 0;
   }
   let show = document.getElementById("hideFirst");
   show.style.display = "inline-block";
