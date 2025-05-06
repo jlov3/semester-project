@@ -1,3 +1,5 @@
+[Deployment](https://jlov3.github.io/semester-project/)
+
 ### Image Credits
 Dice ```SVG``` courtesy of Delapouite from https://game-icons.net/tags/dice.html.
 
